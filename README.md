@@ -12,14 +12,14 @@ the latest release, URL from osmscout-sailfish
 
 * Clone this repository
 
-* cd into it and run ./download.sh
+* cd into it and run `./download.sh`
 
 * cd into marisa source directory (at time of writing, marisa-0.2.4)
 
 * build by running 
-'''
+```
 export SFARCH=armv7hl; mb2 -t SailfishOS-$SFARCH -s ../rpm/marisa.spec build
-'''
+```
 in MER SDK.
 
 * RPMs are under RPMS directory.
