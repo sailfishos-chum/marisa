@@ -24,7 +24,7 @@ the performance.
 %package devel
 Summary: MARISA development headers and static library
 Group: Development/Libraries
-Requires: %{name} = %{version}
+#Requires: %{name} = %{version}
 
 %description devel
 Matching Algorithm with Recursively Implemented StorAge (MARISA) is a
