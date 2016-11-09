@@ -46,6 +46,10 @@ useful to test the performance.
 %setup
 
 %build
+%{__make} clean
+
+CFLAGS="$CFLAGS -fPIC"
+CXXFLAGS="$CXXFLAGS -fPIC"
 %configure 
 
 %{__make} %{?_smp_mflags}
