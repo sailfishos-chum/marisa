@@ -1,6 +1,6 @@
 #!/bin/bash
 
-P=marisa-0.2.4
-curl -O https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/marisa-trie/$P.tar.gz
+V=0.2.4
+wget https://github.com/rinigus/marisa-trie/archive/$V.tar.gz
 
-tar zxvf $P.tar.gz
+tar zxvf $V.tar.gz

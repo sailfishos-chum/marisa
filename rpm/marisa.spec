@@ -46,7 +46,7 @@ useful to test the performance.
 %setup
 
 %build
-%{__make} clean
+%{__make} clean || true
 
 CFLAGS="$CFLAGS -fPIC"
 CXXFLAGS="$CXXFLAGS -fPIC"
