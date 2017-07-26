@@ -43,7 +43,7 @@ tools to test basic operations of libmarisa, and the tools that are
 useful to test the performance.
 
 %prep
-%setup
+%setup -q -n %{name}-%{version}/marisa-trie
 
 %build
 %{__make} clean || true
@@ -63,7 +63,9 @@ CXXFLAGS="$CXXFLAGS -fPIC"
 
 %pre
 
-%post
+%post -n libmarisa -p /sbin/ldconfig
+
+%postun -n libmarisa -p /sbin/ldconfig
 
 %files
 %files
