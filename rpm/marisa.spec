@@ -6,7 +6,8 @@ License: LGPL and BSD 2-clause license
 Group: Libraries/Databases
 URL: http://s-yata.github.io/marisa-trie/docs/readme.en.html
 
-Source: ps://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/marisa-trie/marisa-0.2.4.tar.gz
+#Source: https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/marisa-trie/marisa-0.2.4.tar.gz
+Source0: %{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: gcc-c++
@@ -43,6 +44,7 @@ tools to test basic operations of libmarisa, and the tools that are
 useful to test the performance.
 
 %prep
+
 %setup -q -n %{name}-%{version}/marisa-trie
 
 %build
