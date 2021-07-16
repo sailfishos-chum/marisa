@@ -1,6 +1,6 @@
 Summary: MARISA: Matching Algorithm with Recursively Implemented StorAge
 Name: libmarisa
-Version: 0.2.4
+Version: 0.2.6
 Release: 1%{?dist}
 License: LGPL and BSD 2-clause license
 Group: Libraries/Databases
@@ -10,6 +10,9 @@ URL: http://s-yata.github.io/marisa-trie/docs/readme.en.html
 Source0: %{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires: gcc-c++
 #Requires: pango
 
@@ -50,6 +53,8 @@ useful to test the performance.
 %build
 %{__make} clean || true
 
+autoreconf -i
+
 CFLAGS="$CFLAGS -fPIC"
 CXXFLAGS="$CXXFLAGS -fPIC"
 %configure 
@@ -69,7 +74,6 @@ CXXFLAGS="$CXXFLAGS -fPIC"
 
 %postun -n libmarisa -p /sbin/ldconfig
 
-%files
 %files
 %defattr(-, root, root, 0755)
 %{_libdir}/libmarisa.so
