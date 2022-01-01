@@ -4,7 +4,7 @@ Version: 0.2.6
 Release: 1%{?dist}
 License: LGPL and BSD 2-clause license
 Group: Libraries/Databases
-URL: http://s-yata.github.io/marisa-trie/docs/readme.en.html
+URL: https://github.com/s-yata/marisa-trie
 
 #Source: https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/marisa-trie/marisa-0.2.4.tar.gz
 Source0: %{name}-%{version}.tar.bz2
@@ -24,6 +24,8 @@ from the dictionaries. The package also provides command line tools to
 test basic operations of libmarisa, and the tools are useful to test
 the performance.
 
+Categories:
+  - Library
 
 %package devel
 Summary: MARISA development headers and static library
@@ -35,6 +37,9 @@ Matching Algorithm with Recursively Implemented StorAge (MARISA) is a
 space-efficient trie data structure. This package provides libraries
 and headers for development
 
+Categories:
+  - Library
+
 %package tools
 Summary: MARISA tools
 Group: Libraries/Databases
@@ -45,6 +50,9 @@ Matching Algorithm with Recursively Implemented StorAge (MARISA) is a
 space-efficient trie data structure. The package provides command line
 tools to test basic operations of libmarisa, and the tools that are
 useful to test the performance.
+
+Categories:
+  - Utility
 
 %prep
 
