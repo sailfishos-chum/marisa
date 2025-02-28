@@ -32,6 +32,7 @@ Categories:
 %package devel
 Summary: MARISA development headers and static library
 Group: Development/Libraries
+Provides: %{name}-static = %{version}
 #Requires: %%{name} = %%{version}
 
 %description devel
