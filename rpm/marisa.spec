@@ -1,5 +1,8 @@
-Summary: MARISA: Matching Algorithm with Recursively Implemented StorAge
 Name: libmarisa
+
+%define keepstatic 1
+
+Summary: MARISA: Matching Algorithm with Recursively Implemented StorAge
 Version: 0.2.6
 Release: 1%{?dist}
 License: LGPL and BSD 2-clause license
