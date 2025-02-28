@@ -70,8 +70,8 @@ CXXFLAGS="$CXXFLAGS -fPIC"
 %{__make} %{?_smp_mflags}
 
 %install
-%{__rm} -rf %{buildroot}
 %{__make} install DESTDIR=%{buildroot}
+%{__rm} -rf %{buildroot}%{_libdir}/libmarisa.la || true
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -84,16 +84,15 @@ CXXFLAGS="$CXXFLAGS -fPIC"
 
 %files
 %defattr(-, root, root, 0755)
-%{_libdir}/libmarisa.so
 %{_libdir}/libmarisa.so.0
 %{_libdir}/libmarisa.so.0.0.0
 
 %files devel
 %defattr(-, root, root, 0755)
+%{_libdir}/libmarisa.so
 %{_includedir}/marisa
 %{_includedir}/marisa.h
 %{_libdir}/libmarisa.a
-%{_libdir}/libmarisa.la
 %{_libdir}/pkgconfig/marisa.pc
 
 %files tools
