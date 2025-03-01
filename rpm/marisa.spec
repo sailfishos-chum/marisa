@@ -1,5 +1,8 @@
-Summary: MARISA: Matching Algorithm with Recursively Implemented StorAge
 Name: libmarisa
+
+%define keepstatic 1
+
+Summary: MARISA: Matching Algorithm with Recursively Implemented StorAge
 Version: 0.2.6
 Release: 1%{?dist}
 License: LGPL and BSD 2-clause license
@@ -8,7 +11,6 @@ URL: https://github.com/s-yata/marisa-trie
 
 #Source: https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/marisa-trie/marisa-0.2.4.tar.gz
 Source0: %{name}-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -30,7 +32,8 @@ Categories:
 %package devel
 Summary: MARISA development headers and static library
 Group: Development/Libraries
-#Requires: %{name} = %{version}
+Provides: %{name}-static = %{version}
+#Requires: %%{name} = %%{version}
 
 %description devel
 Matching Algorithm with Recursively Implemented StorAge (MARISA) is a
@@ -61,43 +64,32 @@ Categories:
 %build
 %{__make} clean || true
 
-autoreconf -i
-
 CFLAGS="$CFLAGS -fPIC"
 CXXFLAGS="$CXXFLAGS -fPIC"
-%configure 
+%reconfigure
 
-%{__make} %{?_smp_mflags}
+%{make_build}
 
 %install
-%{__rm} -rf %{buildroot}
-%{__make} install DESTDIR=%{buildroot}
+%{make_install}
+%{__rm} -rf %{buildroot}%{_libdir}/libmarisa.la || true
 
-%clean
-%{__rm} -rf %{buildroot}
+%post -p /sbin/ldconfig
 
-%pre
-
-%post -n libmarisa -p /sbin/ldconfig
-
-%postun -n libmarisa -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root, 0755)
-%{_libdir}/libmarisa.so
 %{_libdir}/libmarisa.so.0
 %{_libdir}/libmarisa.so.0.0.0
 
 %files devel
-%defattr(-, root, root, 0755)
+%{_libdir}/libmarisa.so
 %{_includedir}/marisa
 %{_includedir}/marisa.h
 %{_libdir}/libmarisa.a
-%{_libdir}/libmarisa.la
 %{_libdir}/pkgconfig/marisa.pc
 
 %files tools
-%defattr(-, root, root, 0755)
 %{_bindir}/marisa-*
 
 %changelog
